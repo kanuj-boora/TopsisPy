@@ -7,8 +7,8 @@ setup(
   description = 'Python Package implementing TOPSIS method for multi-criteria decision making method',   # Give a short description about your library
   author = 'Kanuj Boora',                   # Type in your name
   author_email = 'boorakanuj@gmail.com',      # Type in your E-Mail
-  url = 'https://github.com/user/reponame',   # Provide either the link to your github or to your website
-  keywords = ['topsis', 'mcdm', 'TIET'],   # Keywords that define your package best
+  url = 'https://github.com/kanuj-boora/topsis-17188',   # Provide either the link to your github or to your website
+  keywords = ['topsis', 'mcdm', 'mcda', 'TIET', 'thapar'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'numpy',
           'pandas',
