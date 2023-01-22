@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 def readme():
     with open('README.md') as f:
@@ -6,12 +6,13 @@ def readme():
     return README
 
 setup(
-  name = 'topsis_17188',         # How you named your package folder (MyLib)
-  packages = ['topsis_17188'],   # Chose the same as "name"
-  version = '0.7',      # Start with a small number and increase it with every change you make
+  name = 'topsis-kanuj-102017188',         # How you named your package folder (MyLib)
+  packages = find_packages(),   # Chose the same as "name"
+  version = '1.2',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Python Package implementing TOPSIS method for multi-criteria decision making method',   # Give a short description about your library
   long_description= readme(),
+  long_description_content_type='text/markdown',
   author = 'Kanuj Boora',                   # Type in your name
   author_email = 'boorakanuj@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/kanuj-boora/topsis-17188',   # Provide either the link to your github or to your website
@@ -22,7 +23,7 @@ setup(
       ],
   entry_points={
         'console_scripts': [
-            'topsis=topsis_17188.topsis:main'
+            'topsis=topsis.topsis:main'
         ]
     },
   classifiers=[

@@ -38,7 +38,7 @@ def main():
 
     if num_arg != 5:
         print('ERROR: Wrong number of arguments')
-        print('Format of command line input-\npython [package name] [csv data file as string with extension] [weights as string seperated by ","] [impacts as string seperated by ","] [Output csv file name with extension]')
+        print('Format of command line input-\ntopsis [csv data file as string with extension] [weights as string seperated by ","] [impacts as string seperated by ","] [Output csv file name with extension]')
     else:        
         data_file_path = sys.argv[1]
 
