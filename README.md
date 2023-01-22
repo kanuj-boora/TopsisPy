@@ -19,5 +19,9 @@ To use the package from the command line (Data file and result file name should 
 
 ```topsis [data file name] [weights as string seperated by ','] [impacts as string seperated by ','] [result data file name]```
 
+For example<br />
+
+```topsis data.csv "1,1,1,1,1" "+,+,+,-,+" result.csv```
+
 ## Notes
 The data should only contain numerical data.<br />
