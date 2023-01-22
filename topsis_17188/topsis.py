@@ -30,21 +30,30 @@ def col_numeric(x):
     if x.dtype.kind in 'iuf':
        pass
     else:
-        print('Column has non numeric values')
+        print('ERROR: Column has non numeric values')
         exit(1)    
 
-def cmd_args():
+def main():
     num_arg = len(sys.argv)
 
     if num_arg != 5:
-        print('Wrong number of arguments')
-        print('Format of command line input-\npython [package name] [path of data csv as string] [weights as string seperated by ","] [impacts as string seperated by ","]')
+        print('ERROR: Wrong number of arguments')
+        print('Format of command line input-\npython [package name] [csv data file as string with extension] [weights as string seperated by ","] [impacts as string seperated by ","] [Output csv file name with extension]')
     else:        
         data_file_path = sys.argv[1]
-        w = sys.argv[2].replace(' ', '')
-        i = sys.argv[3].replace(' ','')
-        w = list(map(float, w.split(',')))
-        i = list(map(str, i.split(',')))
+
+        try:
+            w = list(map(float, sys.argv[2].replace(' ', '').split(',')))
+        except:
+            print('ERROR: Invalid value in weight')
+            exit(1)
+        
+        try:
+            i = list(map(str, sys.argv[3].replace(' ','').split(',')))
+        except:
+            print('ERROR: Invalid value in impact')
+            exit(1)
+            
         result_file_name = sys.argv[-1]
         
         try:
@@ -55,25 +64,25 @@ def cmd_args():
         
         df_og = pd.read_csv(data_file_path)
         
-        if len(df_og.columns())-1 < 3:
-            print('Input columns are less than 3')
+        if df_og.shape[1]-1 < 3:
+            print('ERROR: Input columns are less than 3')
             exit(1)
         
         df_og.iloc[:, 1:].apply(col_numeric)
         
-        if len(w) != len(df_og)-1:
-            print('Number of value in wieghts and column mismatch')
+        if len(w) != df_og.shape[1]-1:
+            print('ERROR: Number of value in weights and column mismatch')
             exit(1)
-        elif len(i) != len(df_og)-1:
-            print('Number of value in impacts and column mismatch')
+        elif len(i) != df_og.shape[1]-1:
+            print('ERROR: Number of value in impacts and column mismatch')
             exit(1)
         
         for y in i:
             if y not in ('+', '-'):
-                print('Impact value wrong')
+                print('ERROR: Wrong Value in Impact')
                 exit(1)
         
         topsis(df_og, w, i, result_file_name)
 
 if __name__ == '__main__':
-    cmd_args()    
+    main()
